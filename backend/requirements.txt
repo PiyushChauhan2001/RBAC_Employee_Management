@@ -1,0 +1,30 @@
+# Employee Management System — Backend requirements
+# Compatible with Python 3.10 – 3.14
+# Install with: pip install -r requirements.txt
+
+# --- Core framework ---
+Django>=5.2.0,<6.2.0                    # LTS release
+djangorestframework>=3.15.0             # REST API layer for Django
+
+# --- Authentication / security ---
+djangorestframework-simplejwt>=5.4.0   # JWT access/refresh token auth
+django-cors-headers>=4.3.0              # Controlled CORS access for the React frontend
+django-filter>=24.0                     # Filtering/search on list endpoints
+
+# --- Environment / config ---
+python-decouple>=3.8                    # Read secrets/config from .env, keep them out of source
+
+# --- Database driver (choose based on your DB) ---
+psycopg2-binary>=2.9.0                  # PostgreSQL driver (recommended for production)
+# For SQLite (default, used in local dev) — no driver needed, ships with Python
+
+# --- Media / image handling (employee profile photos) ---
+Pillow>=11.0.0
+
+# --- Production server (optional, for deployment) ---
+gunicorn>=23.0.0
+whitenoise>=6.8.0                       # Serve static files without a separate web server
+
+# --- Dev/testing tools (optional) ---
+django-extensions>=3.2.0
+
