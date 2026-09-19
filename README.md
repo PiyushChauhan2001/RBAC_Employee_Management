@@ -100,7 +100,7 @@ The `seed_demo_data` command creates these local development accounts:
 
 | Role | Username | Password |
 |---|---|---|
-| Administrator | `admin` | `AdminPass123!` |
+| Administrator | `admin` | `********` |
 | HR Manager | `hr_manager` | `HrPass123!` |
 | Employee | `jdoe` | `EmployeePass123!` |
 
