@@ -63,7 +63,7 @@ export default function LoginPage() {
           <div className="demo-creds">
             Demo accounts (after running <code>seed_demo_data</code>):
             <br />
-            Admin — <code>admin / AdminPass123!</code>
+            Admin — <code>admin / ######</code>
             <br />
             HR — <code>hr_manager / HrPass123!</code>
             <br />

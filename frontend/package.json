@@ -13,14 +13,14 @@
     "axios": "^1.7.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.30.1"
+    "react-router-dom": "^7.18.4"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.3",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "vite": "^5.4.11"
+    "vite": "^6.4.3"
   },
   "_versionNotes": "Pinned to the widely-adopted React 18 / React Router v6 lineage for maximum library compatibility as of Sep 2026. React 19.2.x and React Router v8 are also current and available, but v8 is ESM-only, requires Node 22+/React 19.2.7+, and renames the 'react-router-dom' package to 'react-router' with breaking API changes — upgrade deliberately, not as a drop-in."
 }
