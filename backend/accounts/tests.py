@@ -59,3 +59,8 @@ class AccountsTests(TestCase):
         self.client.force_authenticate(user=self.admin_user)
         response = self.client.get("/api/accounts/users/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_user_list_root_route(self):
+        self.client.force_authenticate(user=self.admin_user)
+        response = self.client.get("/api/accounts/")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

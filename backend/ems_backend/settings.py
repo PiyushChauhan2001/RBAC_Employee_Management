@@ -4,14 +4,13 @@ Django settings for the Employee Management System backend.
 from pathlib import Path
 from datetime import timedelta
 from decouple import config, Csv
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---------------------------------------------------------------------------
 # Security / core
 # ---------------------------------------------------------------------------
 SECRET_KEY = config("SECRET_KEY", default="django-insecure-change-me-in-production")
-DEBUG = config("DEBUG", default=True, cast=bool)
+DEBUG = config("DEBUG", default=False, cast=bool)
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost,127.0.0.1", cast=Csv())
 
 AUTH_USER_MODEL = "accounts.User"

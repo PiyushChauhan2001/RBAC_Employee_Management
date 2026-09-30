@@ -92,7 +92,9 @@ class LeaveRequestViewSet(viewsets.ModelViewSet):
             employee = request.user.employee_profile
         except Employee.DoesNotExist:
             return Response({"detail": "No employee profile linked to this account."}, status=404)
-        records = LeaveRequest.objects.filter(employee=employee).order_by("-applied_on")
+        records = self.filter_queryset(
+            LeaveRequest.objects.filter(employee=employee).order_by("-applied_on")
+        )
         page = self.paginate_queryset(records)
         serializer = LeaveRequestSerializer(page or records, many=True)
         if page is not None:

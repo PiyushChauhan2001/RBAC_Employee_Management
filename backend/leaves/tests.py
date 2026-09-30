@@ -61,3 +61,31 @@ class LeavesTests(TestCase):
         response = self.client.post("/api/leaves/", payload)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn("detail", response.data)
+
+    def test_my_requests_filters_by_status(self):
+        today = timezone.localdate()
+        LeaveRequest.objects.create(
+            employee=self.employee,
+            leave_type=self.leave_type,
+            start_date=today + timedelta(days=5),
+            end_date=today + timedelta(days=5),
+            reason="Pending request",
+            status=LeaveRequest.Status.PENDING,
+        )
+        LeaveRequest.objects.create(
+            employee=self.employee,
+            leave_type=self.leave_type,
+            start_date=today + timedelta(days=10),
+            end_date=today + timedelta(days=10),
+            reason="Approved request",
+            status=LeaveRequest.Status.APPROVED,
+        )
+        self.client.force_authenticate(user=self.emp_user)
+
+        pending_response = self.client.get("/api/leaves/my-requests/?status=PENDING")
+        approved_response = self.client.get("/api/leaves/my-requests/?status=APPROVED")
+
+        self.assertEqual(pending_response.status_code, status.HTTP_200_OK)
+        self.assertEqual(approved_response.status_code, status.HTTP_200_OK)
+        self.assertEqual([item["status"] for item in pending_response.data["results"]], ["PENDING"])
+        self.assertEqual([item["status"] for item in approved_response.data["results"]], ["APPROVED"])
